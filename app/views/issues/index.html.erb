@@ -1,0 +1,23 @@
+<div class="span12">
+    <article id="issues"></article>
+</div>
+
+<script type="text/json" id="bootstrap">
+  { "issues": <%= @issues.to_json() %>, "paging": <%= @paging.to_json() %> }
+</script>
+
+<%= content_for :javascript do -%>
+    <script type="text/javascript">
+        $(function () {
+            var div = $('<div></div>');
+            div.html($('#bootstrap').text());
+            var data = JSON.parse(div.text());
+
+            Issueviewer.initialize(data);
+        });
+
+        function scrollToTop() {
+            $('html, body').animate({scrollTop:0});
+        }
+    </script>
+<% end %>

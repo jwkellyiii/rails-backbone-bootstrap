@@ -1,0 +1,30 @@
+<section id="issues-viewer">
+    <header>
+        <h1>Issues</h1>
+    </header>
+
+    <section id="issues-list"></section>
+
+    <div class="pagination pagination-mini pagination-centered">
+      <ul>
+        <% var current_page = Number(paging.page); %>
+        <% if(current_page == 1) { %>
+            <li class="disabled"><a href="#">&laquo;</a></li>
+        <% } else { %>
+            <li><a href="/#page/<%= current_page - 1 %>">&laquo;</a></li>
+        <% } %>
+
+        <% for(var i=1;i<=paging.totalpages;i++) { %>
+            <li class="<%= (i == paging.page) ? "active" : "" %>"><a href="/#page/<%= i %>"><%= i %></a></li>
+        <% } %>
+
+        <% if(current_page == paging.totalpages) { %>
+            <li class="disabled"><a href="#">&raquo;</a></li>
+        <% } else { %>
+            <li><a href="/#page/<%= current_page + 1 %>">&raquo;</a></li>
+        <% } %>
+      </ul>
+    </div>
+
+    <footer></footer>
+</section>

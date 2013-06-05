@@ -1,0 +1,21 @@
+<div class="pull-right">
+    <a href="<%= issue.user.html_url %>">
+        <img class="media-object" width="80" height="80" src="<%= issue.user.avatar_url %>" alt="<%= issue.user.login %>" title="<%= issue.user.login %>" />
+    </a>
+</div>
+<div class="media-body">
+    <h5 class="media-heading">
+        <span class="muted">#<%= issue.number %></span>
+        <a href="/#issues/<%= issue.number %>"><%= issue.issue_title_text %></a>
+    </h5>
+    <div>
+        <small>
+            <span>Created <span id="created_at"><%= moment(issue.created_at).fromNow() %></span> by <span id="creator"><a href="<%= issue.user.html_url %>"><%= issue.user.login %></a></span>.</span>
+            <%= issue.comment_count %>
+        </small>
+    </div>
+    <p><%= issue.shortened_issue_body %></p>
+    <span id="labels">
+        <%= issue.label_badges %>
+    </span>
+</div>

@@ -1,0 +1,54 @@
+@import "twitter/bootstrap/variables";
+@import "twitter/bootstrap/mixins";
+@import "twitter/bootstrap/buttons";
+
+/* defaults */
+@padding: 10px;
+@margin: 10px;
+
+/* mixins */
+.common-border(@width: 1px, @style: solid, @color: #d3d3d3) {
+  border: @width @style @color;
+}
+
+#issues-list {
+  margin-bottom: (@margin * 2);
+
+  div.media {
+    padding: @padding;
+    .common-border();
+    .border-radius(6px);
+
+    .media-heading {
+      margin: 0;
+    }
+
+    .media-body {
+      p {
+        margin: 0;
+      }
+    }
+  }
+}
+
+#issue {
+  margin-bottom: (@margin * 2);
+
+  .creator {
+    img {
+      margin: @margin 0;
+    }
+  }
+
+  .issue-body {
+    .common-border();
+    .border-radius(6px);
+    padding: (@padding / 2);
+  }
+}
+
+.comment {
+  .common-border();
+  .border-radius(4px);
+  padding: (@padding / 2);
+}

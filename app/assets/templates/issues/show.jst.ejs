@@ -1,0 +1,59 @@
+
+<% var comments = (issue.comments != null) ? issue.comments : []; %>
+
+<section id="issues-viewer">
+    <header>
+        <h1>Issue <span class="muted">#<%= issue.number %></span></h1>
+    </header>
+
+    <div class="row-fluid">
+        <section id="issue" class="clearfix">
+            <div class="span12">
+                <div class="media">
+                    <div class="pull-left text-center">
+                        <a href="<%= issue.user.html_url %>" class="creator">
+                            <img class="media-object" width="80" height="80" src="<%= issue.user.avatar_url %>" alt="<%= issue.user.login %>" title="<%= issue.user.login %>" />
+                        </a>
+                        <%= issue.state_badge %>
+                    </div>
+                    <div class="media-body">
+                        <div class="issue-body">
+                            <small>
+                                <span>Created by <span id="creator"><a href="<%= issue.user.html_url %>"><%= issue.user.login %></a></span> <span id="created_at"><%= moment(issue.created_at).fromNow() %></span>.</span>
+                                <%= issue.comment_count %>
+                            </small>
+                            <h5 class="media-heading">
+                                <span class="muted">#<%= issue.number %></span>
+                                <%= issue.title %>
+                            </h5>
+                            <div><%= issue.full_issue_html %></div>
+                            <span id="labels">
+                                <%= issue.label_badges %>
+                            </span>
+                        </div>
+
+                        <!-- comments -->
+                        <% for(var i=0; i<comments.length; i++) { %>
+                            <div class="media comment">
+                                <a class="pull-left" href="<%= comments[i].user.html_url %>">
+                                    <img class="media-object" width="80" height="80" src="<%= comments[i].user.avatar_url %>" alt="<%= comments[i].user.login %>" title="<%= comments[i].user.login %>" />
+                                </a>
+                                <div class="media-body">
+                                    <small>
+                                        <span><span id="creator"><a href="<%= comments[i].user.html_url %>"><%= comments[i].user.login %></a></span> commented <span id="created_at"><%= moment(comments[i].created_at).fromNow() %></span>.</span>
+                                    </small>
+                                    <div>
+                                        <%= comments[i].body_html %>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                      </div>
+                      <!-- end comments -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer></footer>
+</section>
